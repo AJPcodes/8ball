@@ -19,13 +19,87 @@ $dark:                            #444 !default;
   0% {
     transform: none; }
   20% {
-    transform: translateX(30%) translateY(-30%) skewX(15deg) skewY(-10deg); }
+    transform: translateX(15%) translateY(-15%) skewX(7deg) skewY(-5deg); }
   20%, 50% {
-    transform: translateX(25%) translateY(-25%) skewX(15deg) skewY(-8deg); }
+    transform: translateX(10%) translateY(-10%) skewX(7deg) skewY(-4deg); }
   50%, 80% {
-    transform: translateX(30%) translateY(-30%) skewX(15deg) skewY(-10deg); }
+    transform: translateX(15%) translateY(-15%) skewX(7deg) skewY(-5deg); }
   80%, 100% {
     transform: none; } }
+
+@keyframes shake {
+  0% {
+    transform: none;
+    background-image: none; }
+  10% {
+    transform: translateX(40%) translateY(-40%) skewX(30deg) skewY(-20deg);
+    background-image: none; }
+  10%, 250% {
+    transform: translateX(25%) translateY(-25%) skewX(15deg) skewY(-8deg);
+    background-image: none; }
+  25%, 40% {
+    transform: translateX(30%) translateY(-30%) skewX(30deg) skewY(-20deg);
+    background-image: none; }
+  50% {
+    transform: none; }
+  60% {
+    transform: translateX(-40%) translateY(40%) skewX(-30deg) skewY(20deg);
+    background-image: none; }
+  60%, 75% {
+    transform: translateX(-25%) translateY(25%) skewX(-15deg) skewY(8deg);
+    background-image: none; }
+  75%, 80% {
+    transform: translateX(-30%) translateY(30%) skewX(-30deg) skewY(20deg);
+    background-image: none; }
+  80%, 100% {
+    transform: none;
+    background-image: none; } }
+
+@keyframes spin {
+  0% {
+    transform: none;
+    background-image: none; }
+  20% {
+    transform: translateX(5px) translateY(50px);
+    height: 75px;
+    padding: 0px;
+    line-height: 25px;
+    background-image: none; }
+  40% {
+    transform: translateX(10px) translateY(250px);
+    height: 20px;
+    width: 75px;
+    padding: 0px;
+    line-height: 3px;
+    background-color: white;
+    background-image: none; }
+  41% {
+    background-color: rgba(255, 255, 255, 0.01);
+    height: 0px;
+    width: 0px;
+    background-image: none; }
+  59% {
+    background-color: rgba(255, 255, 255, 0.01);
+    height: 0px;
+    width: 0px;
+    background-image: none; }
+  60% {
+    background-color: white;
+    transform: translateX(-10px) translateY(-180px);
+    height: 20px;
+    width: 75px;
+    padding: 0px;
+    line-height: 3px;
+    background-image: none; }
+  80% {
+    transform: translateX(-5px) translateY(-50px);
+    height: 75px;
+    padding: 0px;
+    line-height: 25px;
+    background-image: none; }
+  100% {
+    transform: none;
+    background-image: none; } }
 
 ion-content {
   background-color: #c8c8c8; }
@@ -37,21 +111,44 @@ div.pane ion-content div.scroll div.magic {
   height: 300px;
   width: 300px;
   border-radius: 50%;
-  background-image: radial-gradient(circle at 110px 110px, rgba(255, 255, 255, 0.3), rgba(150, 150, 150, 0.2) 20%, rgba(150, 150, 150, 0.05) 50%, transparent); }
+  background-image: radial-gradient(circle at 110px 110px, rgba(255, 255, 255, 0.3), rgba(150, 150, 150, 0.2) 20%, rgba(150, 150, 150, 0.05) 50%, transparent);
+  overflow: hidden; }
 
-div.pane ion-content div.scroll div.magicView.waiting {
-  background-color: white;
+div.pane ion-content div.scroll div.magicView {
+  border: 1px solid white;
+  background-color: #222;
+  background-image: url("/img/blueTriangle.png");
+  background-position: center;
+  background-size: 75px 75px;
+  background-repeat: no-repeat;
   padding: 10%;
   margin: 30% auto;
   height: 110px;
   width: 110px;
   border-radius: 50%;
-  animation: wiggle 3s ease-in infinite alternate; }
+  animation: wiggle 4s linear infinite;
+  overflow: hidden; }
+
+div.pane ion-content div.scroll div.magicView.wiggle {
+  animation: wiggle 4s linear infinite; }
+
+div.pane ion-content div.scroll div.magicView.shake {
+  animation: shake 0.5s linear infinite; }
+
+div.pane ion-content div.scroll div.magicView.spin {
+  animation: spin .75s linear infinite; }
 
 div.scroll div.magicView h1 {
   line-height: 55px;
   text-align: center;
   font-weight: bold; }
+
+div.scroll div.magicView p {
+  font-size: .7em;
+  text-align: center;
+  font-weight: bold;
+  color: white;
+  padding: 10px; }
 
 div.pane ion-content div.scroll .stage {
   display: inline-block;
@@ -64,18 +161,19 @@ div.pane ion-content div.scroll .magic .shadow {
   width: 100%;
   height: 100%;
   background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1) 40%, transparent 50%);
-  transform: rotateX(90deg) translateZ(-30px);
+  transform: rotateX(90deg) translateZ(0px);
   z-index: -1; }
 
 .magic:before {
   content: "";
   position: absolute;
-  background: radial-gradient(circle at 50% 120%, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0) 70%);
+  top: 0;
+  background: radial-gradient(circle at 50% 120%, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0) 70%);
   border-radius: 50%;
   bottom: 2.5%;
   left: 5%;
   opacity: 0.6;
-  height: 100%;
+  height: 70%;
   width: 90%;
   -webkit-filter: blur(5px);
   z-index: 2; }

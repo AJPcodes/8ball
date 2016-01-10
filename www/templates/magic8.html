@@ -5,13 +5,18 @@
 
   <ion-content class="padding">
 
-<div class="stage">
-	<div class="magic">
-	<span class="shadow"></span>
-		<div class="magicView waiting">
-			<h1>8</h1>
+		<div class="stage">
+			<div class="magic">
+			<span class="shadow"></span>
+				<div class="magicView {{currentAnimation}}">
+					<p>{{currentAnswer}}</p>
+				</div>
 		</div>
-</div>
+
+		<button class="button button-block button-dark" ng-click="shake()">
+ 	 		Shake
+		</button>
+
 
 	</div>
 
