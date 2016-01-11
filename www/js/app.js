@@ -24,6 +24,8 @@ angular.module('magic8', ['ionic', 'ngCordova', 'magic8.controllers', 'magic8.se
 })
 
 
+
+
 .config(function($stateProvider, $urlRouterProvider) {
 
   // Ionic uses AngularUI Router which uses the concept of states
