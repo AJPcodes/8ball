@@ -20,7 +20,9 @@ angular.module('magic8.controllers', [])
     "Ask again",
     "No clue!",
     "Positive",
-    "Hmmm"
+    "Hmmm",
+    "Yes!",
+    "Yup"
   ]
 
 
